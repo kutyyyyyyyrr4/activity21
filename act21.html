@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tip Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap" rel="stylesheet">
+    <style>
+
+        *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 18px;
+    color: rgb(214, 87, 191);
+}
+body{
+    height: 100vh;
+    width: 100vw;
+    background-image: url(OIF.jpg);
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container{
+    width: 900px;
+    padding: 130px;
+    border-radius: 12px;
+    background-color: rgb(141, 101, 136);
+    box-shadow: 30px 20px rgb(150, 112, 143);
+}
+h2{
+    text-align: center;
+    font-size: 45px;
+    font-family: "Jersey 25", sans-serif;
+    text-shadow: 2px 6px rgb(53, 26, 44);
+    background-color: rgb(155, 117, 153);
+    padding: 8px;
+    height: 65px;
+    border-radius: 8px;
+}
+.bill{
+    height: 35px;
+    width: 100%;
+    background: none;
+    outline: none;
+    border: solid 3px;
+    margin: 12px 0;
+    padding: 8px;
+    border-radius: 5px;
+}
+.tip-input{
+    width: 83%;
+    margin: 12px 0 20px 0;
+}
+.result{
+    border-top: solid 1px;
+}
+.output{
+    background-color: rgb(209, 183, 203);
+    margin: 12px 0;
+    padding: 8px;
+    border-radius: 8px;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Tip Calculator</h2>
+        <form>
+            <input type="number" placeholder="Bill Amount(50)" class="bill" min="0">
+            <input type="range" value="0" class="tip-input">
+            <span class="tip-percentage">%</span>
+        </form>
+        <div class="result">
+            <div class="output">Tips : <span class="tip-amount"></span></div>
+            <div class="output">Total : <span class="total"></span></div>
+        </div>
+    </div>
+</body>
+<script>
+    document.querySelector('form').onchange=function(){
+    const tips = Number(document.querySelector('.tip-input').value);
+    const bill = Number(document.querySelector('.bill').value);
+    const tipPercent = document.querySelector('.tip-percentage');
+    const tipAmount = document.querySelector('.tip-amount');
+    const total = document.querySelector('.total');
+
+    tipPercent.innerHTML=`${tips}%`;
+    const tipValue = bill*(tips/100);
+    tipAmount.innerHTML=`${tipValue.toFixed(2)} $`;
+    total.innerHTML= `${(bill+tipValue).toFixed(2)} $`;
+}
+</script>
+</html>
